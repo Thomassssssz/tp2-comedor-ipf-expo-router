@@ -1,8 +1,12 @@
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useApp } from "../../context/AppContext";
+
 //pantalla principal de la aplicacion
 export default function Inicio() {
+  const { usuario } = useApp();
+
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Comedor IPF</Text>
@@ -11,16 +15,27 @@ export default function Inicio() {
         Bienvenido al sistema de pedidos del comedor.
       </Text>
 
-      {/*acceso al buscador */}
+      <Link href="/menu" asChild>
+        <Pressable style={styles.boton}>
+          <Text style={styles.textoBoton}>Menu</Text>
+        </Pressable>
+      </Link>
+
       <Link href="/buscar" asChild>
         <Pressable style={styles.boton}>
-          <Text style={styles.textoBoton}>Buscar platos</Text>
+          <Text style={styles.textoBoton}>Buscar</Text>
         </Pressable>
       </Link>
 
       <Link href="/ayuda" asChild>
         <Pressable style={styles.boton}>
           <Text style={styles.textoBoton}>Ayuda</Text>
+        </Pressable>
+      </Link>
+
+      <Link href={usuario ? "/cocina" : "/login"} asChild>
+        <Pressable style={styles.boton}>
+          <Text style={styles.textoBoton}>Cocina</Text>
         </Pressable>
       </Link>
     </View>
@@ -32,12 +47,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
     padding: 20,
   },
   titulo: {
     fontSize: 28,
     fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 10,
   },
   texto: {

@@ -9,11 +9,18 @@ type AppContextType = {
   carrito: Plato[];
   nota: string;
   pedidosEnCola: Pedido[];
+  pedidosAtendidos: Pedido[];
+  pedidoFrente: Pedido | undefined;
+  cantidadEnEspera: number;
+  usuario: string | null;
   agregarAlCarrito: (plato: Plato) => void;
   deshacerUltimo: () => void;
   setNota: (nota: string) => void;
   confirmarPedido: () => number | null;
   pedidosAdelante: (numero: number) => number | null;
+  atenderSiguiente: () => Pedido | undefined;
+  iniciarSesion: (usuario: string, clave: string) => boolean;
+  cerrarSesion: () => void;
   puedeDeshacer: boolean;
   totalCarrito: number;
 };
@@ -24,6 +31,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export function AppProvider({ children }: { children: ReactNode }) {
   const [carrito, setCarrito] = useState<Plato[]>([]);
   const [nota, setNota] = useState("");
+  const [usuario, setUsuario] = useState<string | null>(null);
   const [, setVersionCola] = useState(0);
 
   //guarda las acciones del carrito en una pila
@@ -31,6 +39,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   //guarda los pedidos respetando el orden de llegada
   const colaPedidos = useRef(new Cola<Pedido>());
+
+  //guarda los pedidos atendidos en una pila
+  const pilaAtendidos = useRef(new Pila<Pedido>());
 
   //guarda el proximo numero de pedido
   const proximoNumero = useRef(1);
@@ -95,9 +106,39 @@ export function AppProvider({ children }: { children: ReactNode }) {
   //calcula cuantos pedidos tiene adelante
   const pedidosAdelante = (numero: number): number | null => {
     const pedidos = colaPedidos.current.aArray();
+
     const posicion = pedidos.findIndex((pedido) => pedido.numero === numero);
 
     return posicion === -1 ? null : posicion;
+  };
+
+  //atiende el primer pedido de la cola
+  const atenderSiguiente = (): Pedido | undefined => {
+    const pedido = colaPedidos.current.desencolar();
+
+    if (!pedido) {
+      return undefined;
+    }
+
+    pilaAtendidos.current.push(pedido);
+    setVersionCola((version) => version + 1);
+
+    return pedido;
+  };
+
+  //valida las credenciales del personal
+  const iniciarSesion = (nombre: string, clave: string): boolean => {
+    if (nombre === "cocina" && clave === "1234") {
+      setUsuario(nombre);
+      return true;
+    }
+
+    return false;
+  };
+
+  //cierra la sesion del personal
+  const cerrarSesion = () => {
+    setUsuario(null);
   };
 
   //indica si existe una accion para deshacer
@@ -110,6 +151,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   );
 
   const pedidosEnCola = colaPedidos.current.aArray();
+  const pedidoFrente = colaPedidos.current.frente();
+  const cantidadEnEspera = colaPedidos.current.tamanio;
+
+  //muestra los atendidos desde el mas reciente
+  const pedidosAtendidos = pilaAtendidos.current.aArray().reverse();
 
   return (
     <AppContext.Provider
@@ -117,11 +163,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
         carrito,
         nota,
         pedidosEnCola,
+        pedidosAtendidos,
+        pedidoFrente,
+        cantidadEnEspera,
+        usuario,
         agregarAlCarrito,
         deshacerUltimo,
         setNota,
         confirmarPedido,
         pedidosAdelante,
+        atenderSiguiente,
+        iniciarSesion,
+        cerrarSesion,
         puedeDeshacer,
         totalCarrito,
       }}
