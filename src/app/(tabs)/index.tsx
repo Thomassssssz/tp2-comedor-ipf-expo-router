@@ -17,6 +17,12 @@ export default function Inicio() {
           <Text style={styles.textoBoton}>Buscar platos</Text>
         </Pressable>
       </Link>
+
+      <Link href="/ayuda" asChild>
+        <Pressable style={styles.boton}>
+          <Text style={styles.textoBoton}>Ayuda</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 }
@@ -37,13 +43,16 @@ const styles = StyleSheet.create({
   texto: {
     fontSize: 16,
     textAlign: "center",
-    marginBottom: 25,
+    marginBottom: 30,
   },
   boton: {
     backgroundColor: "#222",
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 10,
+    marginBottom: 12,
+    minWidth: 150,
+    alignItems: "center",
   },
   textoBoton: {
     color: "#fff",
