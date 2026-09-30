@@ -1,7 +1,7 @@
 import { useLocalSearchParams, usePathname, useSegments } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 
-const DEBUG = true;
+const DEBUG = false;
 
 //muestra informacion de la ruta actual
 export default function DondeEstoy() {
