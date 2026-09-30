@@ -12,6 +12,14 @@ export default function RootLayout() {
     <AppProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+        <Stack.Screen
+          name="confirmar"
+          options={{
+            title: "Confirmar pedido",
+            presentation: "modal",
+          }}
+        />
       </Stack>
     </AppProvider>
   );

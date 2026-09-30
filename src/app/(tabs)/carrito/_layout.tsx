@@ -4,8 +4,9 @@ import { Stack } from "expo-router";
 export default function CarritoLayout() {
   return (
     <Stack>
-      {/* Pantalla principal del carrito. */}
       <Stack.Screen name="index" options={{ title: "Carrito" }} />
+
+      <Stack.Screen name="nota" options={{ title: "Nota para cocina" }} />
     </Stack>
   );
 }

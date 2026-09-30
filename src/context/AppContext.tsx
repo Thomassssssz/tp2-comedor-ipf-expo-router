@@ -5,8 +5,10 @@ import { Pila } from "../estructuras/Pila";
 
 type AppContextType = {
   carrito: Plato[];
+  nota: string;
   agregarAlCarrito: (plato: Plato) => void;
   deshacerUltimo: () => void;
+  setNota: (nota: string) => void;
   puedeDeshacer: boolean;
   totalCarrito: number;
 };
@@ -16,6 +18,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 //provider global de la aplicacion
 export function AppProvider({ children }: { children: ReactNode }) {
   const [carrito, setCarrito] = useState<Plato[]>([]);
+  const [nota, setNota] = useState("");
 
   //guarda las acciones del carrito en una pila
   const pilaAcciones = useRef(new Pila<Plato>());
@@ -61,8 +64,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     <AppContext.Provider
       value={{
         carrito,
+        nota,
         agregarAlCarrito,
         deshacerUltimo,
+        setNota,
         puedeDeshacer,
         totalCarrito,
       }}
