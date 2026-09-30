@@ -20,6 +20,7 @@ export default function RootLayout() {
             presentation: "modal",
           }}
         />
+        <Stack.Screen name="turno/[numero]" options={{ title: "Turno" }} />
       </Stack>
     </AppProvider>
   );

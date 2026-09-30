@@ -1,10 +1,25 @@
+import { router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useApp } from "../context/AppContext";
 
 //pantalla de confirmacion del pedido
 export default function Confirmar() {
-  const { carrito, nota, totalCarrito } = useApp();
+  const { carrito, nota, totalCarrito, confirmarPedido } = useApp();
+
+  //confirma el pedido y abre la pantalla del turno
+  const confirmar = () => {
+    const numero = confirmarPedido();
+
+    if (numero === null) {
+      return;
+    }
+
+    router.replace({
+      pathname: "/turno/[numero]",
+      params: { numero: numero.toString() },
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -26,7 +41,7 @@ export default function Confirmar() {
 
       <Text style={styles.total}>Total: ${totalCarrito}</Text>
 
-      <Pressable style={styles.boton}>
+      <Pressable style={styles.boton} onPress={confirmar}>
         <Text style={styles.textoBoton}>Confirmar</Text>
       </Pressable>
     </View>
