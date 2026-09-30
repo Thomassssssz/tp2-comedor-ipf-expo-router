@@ -1,9 +1,11 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router/js-tabs";
 
+//configura la navegacion principal con pestañas
 export default function TabsLayout() {
   return (
     <Tabs>
+      {/* Tab de inicio. */}
       <Tabs.Screen
         name="index"
         options={{
@@ -13,7 +15,7 @@ export default function TabsLayout() {
           ),
         }}
       />
-
+      {/* Tab del menú con navegación propia. */}
       <Tabs.Screen
         name="menu"
         options={{
@@ -24,7 +26,7 @@ export default function TabsLayout() {
           ),
         }}
       />
-
+      {/* Tab del carrito con navegación propia. */}
       <Tabs.Screen
         name="carrito"
         options={{
