@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
+//pantalla principal del menu
 export default function Menu() {
   return (
     <View style={styles.container}>
@@ -10,6 +11,7 @@ export default function Menu() {
   );
 }
 
+//estilos de la pantalla menu
 const styles = StyleSheet.create({
   container: {
     flex: 1,

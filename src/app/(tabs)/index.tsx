@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
+//pantalla principal de la apicacion
 export default function Inicio() {
   return (
     <View style={styles.container}>
@@ -11,7 +12,7 @@ export default function Inicio() {
     </View>
   );
 }
-
+//estilos de la pantalla inicio
 const styles = StyleSheet.create({
   container: {
     flex: 1,
