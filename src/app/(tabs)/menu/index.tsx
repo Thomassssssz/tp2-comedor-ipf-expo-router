@@ -1,0 +1,23 @@
+import { StyleSheet, Text, View } from "react-native";
+
+export default function Menu() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Menú</Text>
+
+      <Text>Acá se mostrarán los platos disponibles.</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  titulo: {
+    fontSize: 26,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+});
