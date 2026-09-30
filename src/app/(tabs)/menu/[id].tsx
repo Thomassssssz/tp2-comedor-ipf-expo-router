@@ -1,10 +1,13 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
+
+import { useApp } from "../../../context/AppContext";
 import { platos } from "../../../data/platos";
 
 //pantalla de detalle de un plato
 export default function DetallePlato() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { agregarAlCarrito } = useApp();
 
   //convierte el parametro de texto a numero
   const idPlato = Number(id);
@@ -16,21 +19,29 @@ export default function DetallePlato() {
     return (
       <View style={styles.container}>
         <Stack.Screen options={{ title: "Plato no encontrado" }} />
+
         <Text style={styles.titulo}>El plato no existe.</Text>
       </View>
     );
   }
 
+  //agrega el plato seleccionado al carrito
+  const agregar = () => {
+    agregarAlCarrito(plato);
+    Alert.alert("Carrito", "Plato agregado correctamente.");
+  };
+
   return (
     <View style={styles.container}>
-      {/*cambia el titulo del header segun el plato */}
       <Stack.Screen options={{ title: plato.nombre }} />
 
       <Text style={styles.titulo}>{plato.nombre}</Text>
+
       <Text style={styles.descripcion}>{plato.descripcion}</Text>
+
       <Text style={styles.precio}>${plato.precio}</Text>
 
-      <Pressable style={styles.boton}>
+      <Pressable style={styles.boton} onPress={agregar}>
         <Text style={styles.textoBoton}>Agregar al carrito</Text>
       </Pressable>
     </View>
