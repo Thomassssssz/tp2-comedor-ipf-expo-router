@@ -11,7 +11,7 @@ export class Cola<T> {
     this.#items.push(elemento);
   }
 
-  // Elimina y devuelve el elemento del frente
+  //elimina y devuelve el elemento del frente
   desencolar(): T | undefined {
     if (this.vacia) {
       return undefined;

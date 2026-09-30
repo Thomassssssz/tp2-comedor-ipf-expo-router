@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
+//pantalla principal del carrito
 export default function Carrito() {
   return (
     <View style={styles.container}>
@@ -10,6 +11,7 @@ export default function Carrito() {
   );
 }
 
+//estilos de la pantalla carrito
 const styles = StyleSheet.create({
   container: {
     flex: 1,
