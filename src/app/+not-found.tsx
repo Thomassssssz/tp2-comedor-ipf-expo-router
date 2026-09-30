@@ -1,6 +1,8 @@
 import { Link, usePathname } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../components/DondeEstoy";
+
 //pantalla para rutas que no existen
 export default function NotFound() {
   const pathname = usePathname();
@@ -18,6 +20,8 @@ export default function NotFound() {
           <Text style={styles.textoBoton}>Volver al inicio</Text>
         </Pressable>
       </Link>
+
+      <DondeEstoy />
     </View>
   );
 }

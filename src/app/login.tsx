@@ -2,6 +2,7 @@ import { router } from "expo-router";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
+import DondeEstoy from "../components/DondeEstoy";
 import { useApp } from "../context/AppContext";
 
 //pantalla de ingreso del personal
@@ -58,6 +59,8 @@ export default function Login() {
       <Pressable style={styles.boton} onPress={ingresar}>
         <Text style={styles.textoBoton}>Ingresar</Text>
       </Pressable>
+
+      <DondeEstoy />
     </View>
   );
 }

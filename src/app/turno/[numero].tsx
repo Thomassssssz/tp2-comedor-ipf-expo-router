@@ -1,6 +1,7 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../../components/DondeEstoy";
 import { useApp } from "../../context/AppContext";
 
 //pantalla que muestra el turno del pedido
@@ -20,6 +21,8 @@ export default function Turno() {
         <Stack.Screen options={{ title: "Turno" }} />
 
         <Text style={styles.titulo}>Pedido no encontrado</Text>
+
+        <DondeEstoy />
       </View>
     );
   }
@@ -33,6 +36,8 @@ export default function Turno() {
       <Text style={styles.numero}>{numeroPedido}</Text>
 
       <Text style={styles.texto}>Pedidos adelante: {adelante}</Text>
+
+      <DondeEstoy />
     </View>
   );
 }

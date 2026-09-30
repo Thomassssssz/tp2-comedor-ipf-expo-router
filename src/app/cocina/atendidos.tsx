@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../../components/DondeEstoy";
 import { useApp } from "../../context/AppContext";
 
 //pantalla de pedidos atendidos
@@ -25,6 +26,8 @@ export default function Atendidos() {
           </View>
         ))
       )}
+
+      <DondeEstoy />
     </ScrollView>
   );
 }

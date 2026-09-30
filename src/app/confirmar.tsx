@@ -1,6 +1,7 @@
 import { router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../components/DondeEstoy";
 import { useApp } from "../context/AppContext";
 
 //pantalla de confirmacion del pedido
@@ -44,6 +45,8 @@ export default function Confirmar() {
       <Pressable style={styles.boton} onPress={confirmar}>
         <Text style={styles.textoBoton}>Confirmar</Text>
       </Pressable>
+
+      <DondeEstoy />
     </View>
   );
 }

@@ -1,8 +1,10 @@
 import { useLocalSearchParams } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
+
+import DondeEstoy from "../../components/DondeEstoy";
 import { CategoriaPlato, platos } from "../../data/platos";
 
-//categorías validas del sistema
+//categorias validas del sistema
 const categoriasValidas: CategoriaPlato[] = [
   "desayuno",
   "almuerzo",
@@ -20,8 +22,10 @@ export default function Categoria() {
   if (!esValida) {
     return (
       <View style={styles.container}>
-        <Text style={styles.titulo}>Categoría no válida</Text>
-        <Text>No existe la categoría "{categoria}".</Text>
+        <Text style={styles.titulo}>Categoria no valida</Text>
+        <Text>No existe la categoria "{categoria}".</Text>
+
+        <DondeEstoy />
       </View>
     );
   }
@@ -42,11 +46,13 @@ export default function Categoria() {
           <Text style={styles.precio}>${plato.precio}</Text>
         </View>
       ))}
+
+      <DondeEstoy />
     </View>
   );
 }
 
-//estilos de la pantalla de categorias
+//estilos de la pantalla categorias
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,6 +1,8 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../../components/DondeEstoy";
+
 //pantalla para articulos de ayuda
 export default function ArticuloAyuda() {
   const { slug } = useLocalSearchParams<{ slug: string[] }>();
@@ -24,7 +26,10 @@ export default function ArticuloAyuda() {
         <Stack.Screen options={{ title: "Ayuda" }} />
 
         <Text style={styles.titulo}>Articulo no encontrado</Text>
+
         <Text>No existe informacion para este tema.</Text>
+
+        <DondeEstoy />
       </View>
     );
   }
@@ -35,6 +40,8 @@ export default function ArticuloAyuda() {
 
       <Text style={styles.titulo}>{ruta}</Text>
       <Text style={styles.texto}>{contenido}</Text>
+
+      <DondeEstoy />
     </View>
   );
 }

@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../../components/DondeEstoy";
 import { useApp } from "../../context/AppContext";
 
 //pantalla principal de cocina
@@ -38,6 +39,8 @@ export default function Cocina() {
       <Pressable style={styles.botonSalir} onPress={cerrarSesion}>
         <Text style={styles.textoSalir}>Cerrar sesion</Text>
       </Pressable>
+
+      <DondeEstoy />
     </View>
   );
 }

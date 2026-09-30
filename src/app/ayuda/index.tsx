@@ -1,6 +1,8 @@
 import { Link, Stack } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../../components/DondeEstoy";
+
 //pantalla principal de ayuda
 export default function Ayuda() {
   return (
@@ -8,6 +10,7 @@ export default function Ayuda() {
       <Stack.Screen options={{ title: "Ayuda" }} />
 
       <Text style={styles.titulo}>Ayuda</Text>
+
       <Text style={styles.texto}>
         Selecciona un tema para ver mas informacion.
       </Text>
@@ -29,6 +32,8 @@ export default function Ayuda() {
           <Text style={styles.textoBoton}>Horarios</Text>
         </Pressable>
       </Link>
+
+      <DondeEstoy />
     </View>
   );
 }
