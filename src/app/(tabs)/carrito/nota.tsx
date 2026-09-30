@@ -1,6 +1,7 @@
 import { router } from "expo-router";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
+import DondeEstoy from "../../../components/DondeEstoy";
 import { useApp } from "../../../context/AppContext";
 
 //pantalla para agregar una nota al pedido
@@ -24,6 +25,8 @@ export default function NotaCarrito() {
       <Pressable style={styles.boton} onPress={() => router.back()}>
         <Text style={styles.textoBoton}>Guardar nota</Text>
       </Pressable>
+
+      <DondeEstoy />
     </View>
   );
 }

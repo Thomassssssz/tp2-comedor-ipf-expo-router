@@ -1,6 +1,7 @@
 import { Link } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../../../components/DondeEstoy";
 import { useApp } from "../../../context/AppContext";
 
 //pantalla principal del carrito
@@ -18,6 +19,7 @@ export default function Carrito() {
         carrito.map((plato, index) => (
           <View key={`${plato.id}-${index}`} style={styles.tarjeta}>
             <Text style={styles.nombre}>{plato.nombre}</Text>
+
             <Text>${plato.precio}</Text>
           </View>
         ))
@@ -28,6 +30,7 @@ export default function Carrito() {
       {nota !== "" && (
         <View style={styles.nota}>
           <Text style={styles.notaTitulo}>Nota:</Text>
+
           <Text>{nota}</Text>
         </View>
       )}
@@ -53,6 +56,8 @@ export default function Carrito() {
           </Pressable>
         </Link>
       )}
+
+      <DondeEstoy />
     </ScrollView>
   );
 }

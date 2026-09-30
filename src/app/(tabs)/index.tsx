@@ -1,6 +1,7 @@
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import DondeEstoy from "../../components/DondeEstoy";
 import { useApp } from "../../context/AppContext";
 
 //pantalla principal de la aplicacion
@@ -38,6 +39,8 @@ export default function Inicio() {
           <Text style={styles.textoBoton}>Cocina</Text>
         </Pressable>
       </Link>
+
+      <DondeEstoy />
     </View>
   );
 }

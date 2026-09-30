@@ -1,5 +1,7 @@
 import { Link } from "expo-router";
 import { Pressable, SectionList, StyleSheet, Text, View } from "react-native";
+
+import DondeEstoy from "../../../components/DondeEstoy";
 import { platos } from "../../../data/platos";
 
 //agrupa los platos por categoria
@@ -29,6 +31,7 @@ export default function Menu() {
       sections={secciones}
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={styles.contenido}
+      ListFooterComponent={<DondeEstoy />}
       renderSectionHeader={({ section }) => (
         <Text style={styles.categoria}>{section.titulo}</Text>
       )}
@@ -43,6 +46,7 @@ export default function Menu() {
           <Pressable style={styles.tarjeta}>
             <View>
               <Text style={styles.nombre}>{item.nombre}</Text>
+
               <Text style={styles.descripcion}>{item.descripcion}</Text>
             </View>
 
